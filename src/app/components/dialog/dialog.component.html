@@ -1,0 +1,70 @@
+<table>
+    <tr>
+        <td class="left" style="width: 130px">Показывать погоду</td>
+        <td class="right">
+            <mat-slide-toggle
+                [color]="color"
+                [checked]="data.isShowWeather"
+                (change)="changeWeather()">
+            </mat-slide-toggle>
+        </td>
+    </tr>
+    <tr>
+        <td class="left">Показывать часы</td>
+        <td class="right">
+            <mat-slide-toggle
+                [color]="color"
+                [checked]="data.isShowTime"
+                (change)="changeTime()">
+            </mat-slide-toggle>
+        </td>
+    </tr>
+    <tr>
+        <td class="left">Цвет фона</td>
+        <td class="right">
+            <button mat-button 
+                [matMenuTriggerFor]="menuColor" 
+                [style.backgroundColor]="data.bgColor"
+                [style.color]="data.bgImage ? '#000000' : data.bgColor === '#ffffff' ? '#000000' : '#ffffff'">Цвет</button>
+            <mat-menu #menuColor="matMenu">
+                <div mat-menu-item class="color-select"  *ngFor="let bgc of colors"(click)="setColor(bgc)" >
+                    <div class="color-item" [style.backgroundColor]="bgc" ></div>
+                </div>
+            </mat-menu>
+        </td>
+    </tr>
+    <tr>
+        <td class="left">Картинка фона</td>
+        <td class="right">
+            <button mat-button 
+                [matMenuTriggerFor]="menuImage" 
+                [style.backgroundImage]="data.bgImage"
+                [style.backgroundSize]="'contain'"
+                [style.color]="data.bgImage ? '#ffffff' : '#000000'">Картинка</button>
+            <mat-menu #menuImage="matMenu">
+                <div mat-menu-item class="image-select"  *ngFor="let bgi of images" (click)="setImage(bgi)">
+                    <div class="image-item" [style.backgroundImage]="'url(' + bgi + ')'" ></div>
+                </div>
+            </mat-menu>
+        </td>
+    </tr>
+    <tr>
+        <td class="left">Поисковик</td>
+        <td class="right">
+            <button mat-button [matMenuTriggerFor]="menu">{{ data.currentEngine || 'Engines' }}</button>
+            <mat-menu #menu="matMenu">
+                <button 
+                    mat-menu-item 
+                    *ngFor="let engin of engines"
+                    (click)="data.setSearchParams(engin)">{{ engin.viewValue }}</button>
+            </mat-menu>
+        </td>
+    </tr>
+
+    <tr>
+        <td></td>
+        <td><button mat-button (click)="close()">Закрыть</button></td>
+    </tr>
+</table>
+
+

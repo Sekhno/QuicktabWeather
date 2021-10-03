@@ -1,0 +1,51 @@
+.color-select,
+.image-select {
+    display: inline-block;
+}
+
+.color-item {
+    display: inline-block;
+    width: 20px;
+    border: solid 1px gray;
+    cursor: pointer;
+    height: 20px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.image-item {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border: solid 1px gray;
+    overflow: hidden;
+    border-radius: 50%;
+    background-size: contain;
+}
+
+.left {
+    text-align: left
+}
+
+.right {
+     text-align: right
+}
+
+.black-shadow {
+    text-shadow: 1px 1px 1px #000;
+    
+}
+
+.preview-color {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    border: solid 1px gray;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+/* button[mat-button] {
+    background-size: contain;
+    color: black;
+} */

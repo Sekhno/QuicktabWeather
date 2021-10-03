@@ -1,0 +1,60 @@
+/* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: Roboto, 'Helvetica Neue', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+}
+
+body {
+    margin: 0;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.icon-engines:not(.i-Yahoo):not(.i-Yandex){
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    background-size: contain;
+    position: relative;
+    top: 2px;
+    left: 3px;
+}
+
+.i-Yahoo {
+    display: inline-block;
+    width: 60px;
+    height: 15px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-left: 5px;
+    background-image: url(./assets/image/yahoo.png);
+}
+
+.i-mailru {
+    background-image: url(./assets/image/mail.ru.svg)
+}
+
+.i-Bing {
+    background-image: url(./assets/image/bing.svg)
+}
+
+.i-Yandex {
+    display: inline-block;
+    width: 70px;
+    height: 45px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url(./assets/image/yandex.svg)
+}

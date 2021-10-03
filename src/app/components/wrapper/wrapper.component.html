@@ -1,0 +1,125 @@
+
+
+<div class="wrapper" 
+    [style.backgroundColor]="params.bgColor" 
+    [style.backgroundImage]="params.bgImage"
+    [style.color]="params.color">
+    
+    <section class="search-parameters">
+        <ul>
+            <li 
+                [ngClass]="{ active: searchParam === 'web' }" 
+                (click)="searchParam = 'web'; setParamsEngine()">Всё</li>
+            <li 
+                [ngClass]="{ active: searchParam === 'images' }" 
+                (click)="searchParam = 'images'; setParamsEngine()">Картинки</li>
+            <li 
+                [ngClass]="{ active: searchParam === 'videos' }" 
+                (click)="searchParam = 'videos'; setParamsEngine()">Видео</li>
+        </ul>
+    </section>
+
+    <section class="weather">
+        <div class="weather-monitor">
+            <div class="toggle" (click)="toggleMonitor()">
+                <i class="wi wi-time-9" *ngIf="isShowWeather"></i>
+                <i class="wi wi-cloud" *ngIf="isShowTime"></i>
+            </div>
+            
+
+            <div class="time" *ngIf="isShowTime" [ngClass]="{ 'animation delay': isShowTime}">
+                <span >{{ whatTime | async | date: 'hh:mm' }}</span>
+                <span class="date-time">
+                    <span>{{ whatTime | async | date: 'EEEE' }}</span>
+                    <span>{{ whatTime | async | date: 'dd.M.yyyy' }}</span>
+                </span>
+                
+            </div>
+
+            <div class="weath" *ngIf="isShowWeather" [ngClass]="{ animation: isShowWeather}">
+                <span>
+                    <span>{{ weather?.main?.temp.toFixed(0) }}</span>
+                    <i class="wi wi-celsius"></i>
+                    
+                </span>
+                <span class="city">
+                    <i class="{{ weatherIcon }}"></i>
+                    <span >{{ weather?.name }}</span>
+                </span>
+                
+            </div> 
+        </div>
+
+        <button mat-icon-button>
+            <i class="material-icons" (click)="openDialog()">more_vert</i>
+        </button>
+    </section>
+
+    <section class="search-wrapper">
+        <div class="input-search">
+            <div class="search-panel">
+                <div>
+                    <button id="search-button" mat-button [matMenuTriggerFor]="menu">
+                        {{ params.currentEngine || 'Engines' }}
+                        <i class="material-icons">keyboard_arrow_down</i>
+                    </button>
+                    <mat-menu #menu="matMenu">
+                        <button 
+                            mat-menu-item 
+                            *ngFor="let engin of engines"
+                            (click)="setSearchParams(engin)">
+                            <i class="icon-engines i-{{ engin.viewValue === 'mail.ru' ? engin.viewValue.replace('.','') : engin.viewValue }}"></i>
+                                {{ engin.viewValue === 'Bing' || engin.viewValue === 'mail.ru' ? engin.viewValue : engin.viewValue === 'Yahoo' || engin.viewValue === 'Yandex' ? '' :engin.viewValue.slice(1) }} 
+                        </button>
+                    </mat-menu>
+                </div>
+                <div>
+                    <label id="label-search">
+                        <!-- Input Search -->
+                        <input 
+                            type="search"
+                            [(ngModel)]="searchQuery" 
+                            (keyup.enter)="backToTheFuture()"
+                            (keyup)="setParamsEngine()"
+                            (focus)="isHidePlaceholder = true"
+                            (blur)="isHidePlaceholder = false">
+                        <span 
+                            id="placeholder-search" 
+                            *ngIf="!isHidePlaceholder"
+                            [style.opacity]="searchQuery ? 0.1 : 1">Введите поисковый запрос или URL</span>
+                    </label>
+                </div>
+                <div class="search-wrap">
+                    <a 
+                        [href]="params.searchEngine" 
+                        [style.color]="params.color" 
+                        id="future">
+                        <button mat-button >
+                             <i class="material-icons">search</i>
+                            Поиск
+                        </button>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="social-link">
+                <a href="https://www.youtube.com/">
+                    <div class="social-item" [style.background]="'url(assets/image/yt.svg)'"></div>
+                </a>
+                <a href="https://www.facebook.com/">
+                    <div class="social-item" [style.background]="'url(assets/image/fb.svg)'"></div>
+                </a>
+                <a href="https://vk.com/">
+                    <div class="social-item" [style.background]="'url(assets/image/vk.svg)'"></div>
+                </a>
+                <a href="https://ok.ru/">
+                    <div class="social-item" [style.background]="'url(assets/image/ok.svg)'"></div>
+                </a>
+                <a href="https://mail.google.com/">
+                    <div class="social-item" [style.background]="'url(assets/image/gm.svg)'"></div>
+                </a> 
+            </div>
+        </div>
+    </section> 
+
+</div>
