@@ -2,6 +2,10 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.5.
 
+## Preview
+
+[![Landing Page Preview](https://photos.app.goo.gl/9JZ4zf4zKPNLm1Xa8)](https://startbootstrap.github.io/startbootstrap-landing-page/)
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
